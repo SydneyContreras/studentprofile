@@ -11,4 +11,4 @@ function toggleMenu() {
     document.getElementById("overlay").style.display = "none";
     toggleStatus = 1;
     }
-  }
+}

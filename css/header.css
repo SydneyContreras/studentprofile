@@ -59,8 +59,18 @@
     .header-menu-button{
         display: none;
     }
+   
     #mySidebar{
         display: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        padding: 30px 0 0;
+        background-color: rgb(29, 29, 29);
+        width: 240px;
+        z-index: 999999999;
+        overflow: hidden;
         
     }
     .sidebar {
@@ -95,9 +105,19 @@
         cursor: pointer;
         position: fixed;
       }
-      #mySidebar{
+      #overlay {
+        position: fixed;
         display: none;
-      }
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 2;
+        cursor: pointer;
+        }
     
 } 
 
