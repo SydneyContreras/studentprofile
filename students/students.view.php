@@ -40,8 +40,10 @@ $student = new Student($db);
                     <td>
                         <a href="student_edit.php?id=<?php echo $result['id']; ?>">Edit</a>
                         |
-                        <a href="student_delete.php?id=<?php echo $result['id']; ?>">Delete</a>
+                        <a href="../student_delete.php?id=<?php echo $result['id']; ?>">Delete</a>
                     </td>
+                    <?php
+                    ?>
                 </tr>
             <?php } ?>
 

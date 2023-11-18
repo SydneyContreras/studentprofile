@@ -77,7 +77,7 @@ class Student {
             $stmt->bindValue(':last_name', $data['last_name']);
             $stmt->bindValue(':gender', $data['gender']);
             $stmt->bindValue(':birthday', $data['birthday']);
-            $stmt->bindValue(':id', $id); // Remove this line
+           
     
             // Execute the query
             $stmt->execute();
@@ -92,22 +92,36 @@ class Student {
 
     public function delete($id) {
         try {
-            $sql = "DELETE FROM students WHERE id = :id";
-            $stmt = $this->db->getConnection()->prepare($sql);
-            $stmt->bindValue(':id', $id);
-            $stmt->execute();
-
-            // Check if any rows were affected (record deleted)
-            if ($stmt->rowCount() > 0) {
+            $this->db->getConnection()->beginTransaction();
+    
+            $detailSql = "DELETE FROM student_details WHERE student_id = :id";
+            $detailStmt = $this->db->getConnection()->prepare($detailSql);
+            $detailStmt->bindValue(':id', $id);
+            $detailStmt->execute(); 
+    
+           
+            $studentSql = "DELETE FROM students WHERE id = :id";
+            $studentStmt = $this->db->getConnection()->prepare($studentSql);
+            $studentStmt->bindValue(':id', $id);
+            $studentStmt->execute();
+    
+            
+            $this->db->getConnection()->commit();
+    
+           
+            if ($studentStmt->rowCount() > 0) {
                 return true; // Record deleted successfully
             } else {
-                return false; // No records were deleted (student_id not found)
+                return false; 
             }
         } catch (PDOException $e) {
+           
+            $this->db->getConnection()->rollBack();
             echo "Error: " . $e->getMessage();
-            throw $e; // Re-throw the exception for higher-level handling
+            throw $e; 
         }
     }
+    
 
     public function displayAll(){
         try {
