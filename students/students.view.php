@@ -22,10 +22,6 @@ $student = new Student($db);
                 </tr>
             </thead>
             <tbody>
-                <!-- You'll need to dynamically generate these rows with data from your database -->
-        
-                
-                
                 <?php
                 $results = $student->displayAll(); 
                 foreach ($results as $result) {
@@ -38,7 +34,7 @@ $student = new Student($db);
                     <td><?php echo $result['gender']; ?></td>
                     <td><?php echo $result['birthday']; ?></td>
                     <td>
-                        <a href="student_edit.php?id=<?php echo $result['id']; ?>">Edit</a>
+                        <a href="../student_edit.php?id=<?php echo $result['id']; ?>">Edit</a>
                         |
                         <a href="../student_delete.php?id=<?php echo $result['id']; ?>">Delete</a>
                     </td>

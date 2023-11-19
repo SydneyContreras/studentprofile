@@ -88,7 +88,23 @@ class Student {
             echo "Error: " . $e->getMessage();
             throw $e; // Re-throw the exception for higher-level handling
         }
-    }
+        }
+        public function getStudentById($id) {
+            try {
+                $sql = "SELECT * FROM students WHERE id = :id";
+                $stmt = $this->db->getConnection()->prepare($sql);
+                $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        
+                $stmt->execute(); // Execute the prepared statement
+        
+                // Fetch the result as an associative array
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            } catch (PDOException $e) {
+                // Handle any potential errors here
+                echo "Error: " . $e->getMessage();
+                throw $e; // Re-throw the exception for higher-level handling
+            }
+        }
 
     public function delete($id) {
         try {
