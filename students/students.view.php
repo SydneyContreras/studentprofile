@@ -7,19 +7,19 @@ $connection = $db->getConnection();
 $student = new Student($db);
 ?>
         <?php  include 'base.php'; ?>
-        <div class="content">
+        <div class="content-center">
         <h1 class="text-center">STUDENTS' RECORD</h1>
         <table class="table table-striped table-dark fixed">
             <thead>
                 <tr>
-                    <th colspan="4">STUDENT NUMBER</th>
+                    <th colspan="2">STUDENT NUMBER</th>
                     <th>FIRST NAME</th>
                     <th>MIDDLE NAME</th>
                     <th>LAST NAME</th>
                     <th>GENDER</th>
                     <th>BIRTHDAY</th>
                     <th>CONTACT NUMBER</th>
-                    <th>ADDRESS</th>
+                    <th colspan="2">ADDRESS</th>
                     <th>Action</th>
                     
                 </tr>
@@ -30,7 +30,7 @@ $student = new Student($db);
                 foreach ($results as $result) {
                 ?>
                 <tr>
-                    <td colspan="4"><?php echo $result['student_number']; ?></td>
+                    <td colspan="2"><?php echo $result['student_number']; ?></td>
                     <td><?php echo $result['first_name']; ?></td>
                     <td><?php echo $result['middle_name']; ?></td>
                     <td><?php echo $result['last_name']; ?></td>
@@ -46,7 +46,7 @@ $student = new Student($db);
                     ?>
                     <td><?php echo $result['birthday']; ?></td>
                     <td><?php echo $result['contact_number']; ?></td>
-                    <td><?php echo $result['ADDRESS']; ?></td>
+                    <td colspan="2"><?php echo $result['ADDRESS']; ?></td>
                     <td>
                         <a href="../student_edit.php?id=<?php echo $result['id']; ?>">Edit</a>
                         |

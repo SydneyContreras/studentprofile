@@ -141,3 +141,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     echo 'Invalid or missing student ID.';
 }
 ?>
+
+        <?php include('templates/footer.html'); ?>
+        <p></p>
+    </main>
+</body>
+
+</html>
+
